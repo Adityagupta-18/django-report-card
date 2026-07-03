@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <form method="GET" class="d-flex w-50 m-auto mt-5" role="search">
+        <input class="form-control me-2 border border-dark" name='search' type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+<table class="w-75 mx-auto my-4 table table-striped table-bordered">
+  <thead>
+      <tr>
+      <th scope="col">S No.</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+</thead>
+{% for d in data %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{d.student_id}}</td>
+      <td>{{d.student_name}}</td>
+      <td>{{d.student_email}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<nav aria-label="conatiner Page navigation example" class=" d-flex align-items-center justify-content-center mx-auto">
+  <ul class="pagination">
+    <li class="page-item">
+      <span class="page-link" href="#" aria-label="Previous">
+        {% if data.has_previous %}
+            <a href="?page={{ data.previous_page_number }}"> Prev &laquo;</a>
+          {% else %}
+            <span style="visibility: hidden;">Prev &laquo;</span>
+        {% endif %}
+      </span>
+    </li>
+
+<li class='page-item d-flex align-items-center justify-content-center p-2'>
+ <span class="current">
+            Page {{ data.number }} of {{ data.paginator.num_pages }}.
+        </span>
+      </li>
+
+    <li class="page-item">
+      <span class="page-link" href="#" aria-label="Next">
+        {% if data.has_next %}
+            <a href="?page={{ data.next_page_number }}">&raquo; Next</a>
+        {% else %}
+            <span style="visibility: hidden;">&raquo; Next</span>
+        {% endif %}
+      </span>
+    </li>
+  </ul>
+</nav>
+
+{% endblock body %}
