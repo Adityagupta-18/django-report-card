@@ -31,7 +31,18 @@
 
 <nav aria-label="conatiner Page navigation example" class=" d-flex align-items-center justify-content-center mx-auto">
   <ul class="pagination">
-    <li class="page-item">
+
+    <li class="page-item mx-1 border border-dark rounded">
+      {% if data.has_previous %}
+      <span class="page-link" href="#" aria-label="First">
+        <a href="?page=1"> First &laquo;</a>
+        {% else %}
+            <span style="visibility: hidden;">First &laquo;</span>
+        {% endif %}
+      </span>
+    </li>
+
+    <li class="page-item mx-1 border border-dark rounded">
       <span class="page-link" href="#" aria-label="Previous">
         {% if data.has_previous %}
             <a href="?page={{ data.previous_page_number }}"> Prev &laquo;</a>
@@ -47,12 +58,22 @@
         </span>
       </li>
 
-    <li class="page-item">
+    <li class="page-item mx-1 border border-dark rounded">
       <span class="page-link" href="#" aria-label="Next">
         {% if data.has_next %}
             <a href="?page={{ data.next_page_number }}">&raquo; Next</a>
         {% else %}
             <span style="visibility: hidden;">&raquo; Next</span>
+        {% endif %}
+      </span>
+    </li>
+
+    <li class="page-item mx-1 border border-dark rounded">
+      {% if data.has_next %}
+      <span class="page-link" href="#" aria-label="Last">
+        <a href="?page={{ data.paginator.num_pages }}">&raquo; Last</a>
+        {% else %}
+            <span style="visibility: hidden;">&raquo; Last</span>
         {% endif %}
       </span>
     </li>

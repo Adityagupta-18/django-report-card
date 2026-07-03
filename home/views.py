@@ -17,5 +17,3 @@ def get_data(request):
 
     context={"data": page_obj}
     return render(request,'home.html',context)
-
-
