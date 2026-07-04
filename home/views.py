@@ -1,7 +1,7 @@
 from django.shortcuts import render , HttpResponse
 from home.models import *
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q , Sum
 # Create your views here.
 
 def get_data(request):
@@ -17,3 +17,9 @@ def get_data(request):
 
     context={"data": page_obj}
     return render(request,'home.html',context)
+
+def result(request,student_id):
+    queryset=subjectmarks.objects.filter(student__student_id__student_id=student_id)
+    total=queryset.aggregate(total_marks=Sum('marks'))
+    context={'queryset':queryset,'total':total}
+    return render(request,'result.html',context)

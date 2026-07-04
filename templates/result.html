@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<div class=container>
+</div>
+<div class="container mt-5 d-flex align-itmes-center justify-content-center px-5 text-secondary gap-5">
+<h3>RANK : </h3> 
+<h3>|</h3>
+<h3>TOTAL : {{total.total_marks}}</h3>
+</div>
+
+<table class="w-75 mx-auto my-4 table table-striped table-bordered mt-5">
+    <tbody>
+      {% for q in queryset %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{q.subject.subject}}</td>
+      <td>{{q.marks}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock body %}

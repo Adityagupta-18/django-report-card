@@ -20,7 +20,7 @@
   <tbody>
     <tr>
       <th scope="row">{{forloop.counter}}</th>
-      <td>{{d.student_id}}</td>
+      <td><a href="{% url "result" d.student_id %}">{{d.student_id}}</a></td>
       <td>{{d.student_name}}</td>
       <td>{{d.student_email}}</td>
     </tr>
@@ -52,7 +52,7 @@
       </span>
     </li>
 
-<li class='page-item d-flex align-items-center justify-content-center p-2'>
+  <li class='page-item d-flex align-items-center justify-content-center p-2'>
  <span class="current">
             Page {{ data.number }} of {{ data.paginator.num_pages }}.
         </span>

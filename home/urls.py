@@ -4,4 +4,5 @@ from home.views import *
 
 urlpatterns = [
     path('',get_data, name='home'),
+    path('result/<student_id>/',result, name='result'),
 ]
