@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block body %}
-<div class=container>
+
+<h2 class="text-center mt-3">RESULT</h2>
+<div class="container my-3 d-flex align-itmes-center justify-content-center text-dark gap-3 border border-dark py-3 w-50 rounded">
+  <h3>NAME : {{student.student_name}}</h3>
+  <h3>|</h3>
+  <h3>STD ID : {{student.student_id}}</h3>
 </div>
-<div class="container mt-5 d-flex align-itmes-center justify-content-center px-5 text-secondary gap-5">
-<h3>RANK : </h3> 
-<h3>|</h3>
-<h3>TOTAL : {{total.total_marks}}</h3>
+<hr>
+
+<div class="card mx-4 my-4 border border-dark d-flex mx-auto" style="width: 14rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item fs-5">RANK : {{student.rank}}</li>
+    <li class="list-group-item fs-5">TOTAL : {{total.total_marks}}</li>
+  </ul>
 </div>
 
-<table class="w-75 mx-auto my-4 table table-striped table-bordered mt-5">
+<table class="w-75 mx-auto table table-striped table-bordered">
     <tbody>
       {% for q in queryset %}
     <tr>

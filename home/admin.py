@@ -5,7 +5,7 @@ admin.site.register(Department)
 admin.site.register(StudentID)
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display=['student_name','department','student_id']
+    list_display=['student_name','department','student_id','rank']
 
 admin.site.register(Student,StudentAdmin)
 

@@ -21,5 +21,8 @@ def get_data(request):
 def result(request,student_id):
     queryset=subjectmarks.objects.filter(student__student_id__student_id=student_id)
     total=queryset.aggregate(total_marks=Sum('marks'))
-    context={'queryset':queryset,'total':total}
+    
+    student=Student.objects.get(student_id__student_id=student_id)
+    context={'queryset':queryset,'total':total,'student':student}
     return render(request,'result.html',context)
+

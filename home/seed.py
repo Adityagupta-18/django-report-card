@@ -1,5 +1,6 @@
 from home.models import *
 import random
+from django.db.models import Sum
 from faker import Faker
 fake=Faker()
 
@@ -44,3 +45,9 @@ def submarks():
                 subject=sub,
                 marks=random.randint(0,100)
             )
+
+def rank():
+    students=Student.objects.annotate(total_marks=Sum("studentmarks__marks")).order_by("-total_marks")
+    for r,student in enumerate(students,start=1):
+        student.rank=r
+        student.save()

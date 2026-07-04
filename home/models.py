@@ -30,6 +30,7 @@ class Student(models.Model):
     student_email=models.CharField(max_length=30)
     student_age=models.IntegerField()
     student_address=models.CharField(max_length=100)
+    rank=models.IntegerField(default=0)
 
     def __str__(self):
         return self.student_name
@@ -44,7 +45,7 @@ class Subject(models.Model):
         return self.subject
 
 class subjectmarks(models.Model):
-    student=models.ForeignKey(Student,on_delete=models.CASCADE)
+    student=models.ForeignKey(Student,related_name='studentmarks',on_delete=models.CASCADE)
     subject=models.ForeignKey(Subject,on_delete=models.CASCADE)
     marks=models.IntegerField()
 
